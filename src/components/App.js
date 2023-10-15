@@ -10,6 +10,7 @@ import TableForm from "./TableForm";
 import ReactToPrint from "react-to-print";
 import { DonateButton } from "../buttons";
 import { State } from "../context/stateContext";
+import Footer from "./Footer";
 
 function App() {
   const {
@@ -25,8 +26,8 @@ function App() {
     setBankName,
     bankAccount,
     setBankAccount,
-    website,
-    setWebsite,
+    // website,
+    // setWebsite,
     clientName,
     setClientName,
     clientAddress,
@@ -56,7 +57,7 @@ function App() {
             <div className="flex flex-col justify-center">
               <article className="md:grid grid-cols-2 gap-10">
                 <div className="flex flex-col">
-                  <label htmlFor="name">Your full name</label>
+                  <label htmlFor="name">Name</label>
                   <input
                     type="text"
                     name="text"
@@ -70,7 +71,7 @@ function App() {
                 </div>
 
                 <div className="flex flex-col">
-                  <label htmlFor="address">Enter your address</label>
+                  <label htmlFor="address">Address</label>
                   <input
                     type="text"
                     name="address"
@@ -86,7 +87,7 @@ function App() {
 
               <article className="md:grid grid-cols-3 gap-10">
                 <div className="flex flex-col">
-                  <label htmlFor="email">Enter your email</label>
+                  <label htmlFor="email">Email</label>
                   <input
                     type="email"
                     name="email"
@@ -99,8 +100,8 @@ function App() {
                   />
                 </div>
 
-                <div className="flex flex-col">
-                  <label htmlFor="website">Enter your website</label>
+                {/* <div className="flex flex-col">
+                  <label htmlFor="website">website</label>
                   <input
                     type="url"
                     name="website"
@@ -111,10 +112,10 @@ function App() {
                     value={website}
                     onChange={(e) => setWebsite(e.target.value)}
                   />
-                </div>
+                </div> */}
 
                 <div className="flex flex-col">
-                  <label htmlFor="phone">Enter your phone</label>
+                  <label htmlFor="phone">Phone</label>
                   <input
                     type="text"
                     name="phone"
@@ -130,7 +131,7 @@ function App() {
 
               <article className="md:grid grid-cols-2 gap-10">
                 <div className="flex flex-col">
-                  <label htmlFor="bankName">Enter your bank name</label>
+                  <label htmlFor="bankName">Bank</label>
                   <input
                     type="text"
                     name="bankName"
@@ -145,7 +146,7 @@ function App() {
 
                 <div className="flex flex-col">
                   <label htmlFor="bankAccount">
-                    Enter your bank account number
+                    account number
                   </label>
                   <input
                     type="text"
@@ -162,7 +163,7 @@ function App() {
 
               <article className="md:grid grid-cols-2 gap-10 md:mt-16">
                 <div className="flex flex-col">
-                  <label htmlFor="clientName">Enter your client's name</label>
+                  <label htmlFor="clientName">Client</label>
                   <input
                     type="text"
                     name="clientName"
@@ -177,7 +178,7 @@ function App() {
 
                 <div className="flex flex-col">
                   <label htmlFor="clientAddress">
-                    Enter your client's address
+                    Address
                   </label>
                   <input
                     type="text"
@@ -194,12 +195,12 @@ function App() {
 
               <article className="md:grid grid-cols-3 gap-10">
                 <div className="flex flex-col">
-                  <label htmlFor="invoiceNumber">Invoice Number</label>
+                  <label htmlFor="invoiceNumber">Order Number</label>
                   <input
                     type="text"
                     name="invoiceNumber"
                     id="invoiceNumber"
-                    placeholder="Invoice Number"
+                    placeholder="Order Number"
                     autoComplete="off"
                     value={invoiceNumber}
                     onChange={(e) => setInvoiceNumber(e.target.value)}
@@ -207,7 +208,7 @@ function App() {
                 </div>
 
                 <div className="flex flex-col">
-                  <label htmlFor="invoiceDate">Invoice Date</label>
+                  <label htmlFor="invoiceDate">Date</label>
                   <input
                     type="date"
                     name="invoiceDate"
@@ -260,8 +261,9 @@ function App() {
         <div className="invoice__preview bg-white p-5 rounded-2xl border-4 border-blue-200">
           <ReactToPrint
             trigger={() => (
-              <button className="bg-blue-500 ml-5 text-white font-bold py-2 px-8 rounded hover:bg-blue-600 hover:text-white transition-all duration-150 hover:ring-4 hover:ring-blue-400">
-                Print / Download
+              
+              <button className="bg-green-500 ml-5 text-white font-bold py-2 px-8 rounded hover:bg-black-600 hover:text-white transition-all duration-150 hover:ring-4 hover:ring-blue-400">
+                Download
               </button>
             )}
             content={() => componentRef.current}
@@ -278,6 +280,8 @@ function App() {
             <Table />
 
             <Notes />
+
+            <Footer />
 
 
           </div>
