@@ -1,4 +1,4 @@
-import { LogIn, CreateAccount } from "../../buttons"
+// import { LogIn, CreateAccount } from "../../buttons"
 
 export default function CallToAction() {
   return (
@@ -7,23 +7,23 @@ export default function CallToAction() {
         <section className="max-width">
           <div className="md:grid grid-cols-2 gap-10 md:place-items-center">
             <article>
-              <h2 className="text-slate-800 font-bold text-3xl md:text-4xl mb-5">
-                Login or Create An Account to Get Started
-              </h2>
-              <p className="mb-10 text-slate-700">
+              {/* <h2 className="text-slate-800 font-bold text-3xl md:text-4xl mb-5">
+                What do you want to do:
+              </h2> */}
+              {/* <p className="mb-10 text-slate-700">
                 Simply create an account and
                 begin creating invoices for your clients.
-              </p>
+              </p> */}
             </article>
 
             <article>
               <ul className="flex items-center justify-center">
-                <li className="mr-3">
+                {/* <li className="mr-3">
                   <CreateAccount />
-                </li>
-                <li className="">
+                </li> */}
+                {/* <li className="">
                   <LogIn />
-                </li>
+                </li> */}
               </ul>
             </article>
           </div>

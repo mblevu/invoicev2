@@ -76,30 +76,9 @@ export default function StateContext({ children }) {
     calculateAmount(amount);
   }, [amount, price, quantity, setAmount]);
 
-  /* Calculate total amount of items in table
-  This is the previous function to calculate the total amount of items in the table
-  But it has a bug where if you delete an item from the table, it still keeps the previous total amount.
-  The function after this comment uses `collect.js` which is a much better solution.  
-  */
-  // function CalcSum() {
-  //   let rows = document.querySelectorAll(".amount");
-  //   let sum = 0;
-
-  //   for (let i = 0; i < rows.length; i++) {
-  //     if (rows[i].className === "amount") {
-  //       sum += isNaN(rows[i].innerHTML) ? 0 : parseInt(rows[i].innerHTML);
-  //       setTotal(sum);
-  //     }
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   CalcSum();
-  // }, [price, quantity]);
-
-  // Use collect.js to calculate the total amount of items in the table. This is a much better function than the commented one above.
+  // Use collect.js to calculate the total amount of items in the table
   const calculateTotal = () => {
-    const allItems = list.map((item) => item.price);
+    const allItems = list.map((item) => item.amount);
 
     setTotal(collect(allItems).sum());
   };

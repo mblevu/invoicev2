@@ -9,9 +9,9 @@ export default function Table() {
       <table width="100%" className="mb-10">
         <thead>
           <tr className="bg-gray-100 p-1">
-            <td className="font-bold">Description</td>
-            <td className="font-bold">Quantity</td>
-            <td className="font-bold">Price</td>
+            <td className="font-bold">Title</td>
+            <td className="font-bold">Pages</td>
+            <td className="font-bold">CPP</td>
             <td className="font-bold">Amount</td>
           </tr>
         </thead>
@@ -31,7 +31,7 @@ export default function Table() {
 
       <div>
         <h2 className="flex items-end justify-end text-gray-800 text-4xl font-bold">
-          Kshs. {total.toLocaleString()}
+          Ksh. {total.toLocaleString()}
         </h2>
       </div>
     </>

@@ -29,12 +29,12 @@ export default function TableForm() {
 
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col md:mt-16">
-          <label htmlFor="description">Item description</label>
+          <label htmlFor="description">Title</label>
           <input
             type="text"
             name="description"
             id="description"
-            placeholder="Item description"
+            placeholder="Job description"
             maxLength={96}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -43,12 +43,12 @@ export default function TableForm() {
 
         <div className="md:grid grid-cols-3 gap-10">
           <div className="flex flex-col">
-            <label htmlFor="quantity">Quantity</label>
+            <label htmlFor="quantity">Pages</label>
             <input
               type="text"
               name="quantity"
               id="quantity"
-              placeholder="Quantity"
+              // placeholder="Quantity"
               maxLength={33}
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
@@ -56,12 +56,12 @@ export default function TableForm() {
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="price">Price</label>
+            <label htmlFor="price">CPP</label>
             <input
               type="text"
               name="price"
               id="price"
-              placeholder="Price"
+              placeholder="Cost per page"
               maxLength={33}
               value={price}
               onChange={(e) => setPrice(e.target.value)}
@@ -75,9 +75,9 @@ export default function TableForm() {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 mb-5 text-white font-bold py-2 px-8 rounded hover:bg-blue-600 hover:text-white transition-all duration-150 hover:ring-4 hover:ring-blue-400"
+          className="bg-green-500 mb-5 text-white font-bold py-2 px-8 rounded hover:bg-black-600 hover:text-white transition-all duration-150 hover:ring-4 hover:ring-blue-400"
         >
-          {isEditing ? "Finish Editing" : "Add Table Item"}
+          {isEditing ? "Finish Editing" : "Add"}
         </button>
       </form>
 
@@ -86,9 +86,9 @@ export default function TableForm() {
       <table width="100%" className="mb-10 overflow-auto">
         <thead>
           <tr className="bg-gray-100 p-1">
-            <td className="font-bold">Description</td>
-            <td className="font-bold">Quantity</td>
-            <td className="font-bold">Price</td>
+            <td className="font-bold">Title</td>
+            <td className="font-bold">Pages</td>
+            <td className="font-bold">CPP</td>
             <td className="font-bold">Amount</td>
           </tr>
         </thead>

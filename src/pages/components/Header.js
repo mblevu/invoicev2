@@ -34,7 +34,8 @@ export default function Header() {
 
         <nav className="navbar">
           <ul>
-            {links.map(({ id, title, url }) => (
+          {links ? (
+            links.map(({ id, title, url }) => (
               <React.Fragment key={id}>
                 <li key={id} className="list-item">
                   <Link to={url} className="text-base text-slate-700">
@@ -42,7 +43,8 @@ export default function Header() {
                   </Link>
                 </li>
               </React.Fragment>
-            ))}
+            ))
+          ) : null}
 
             <li>{user ? <LogOut /> : <CreateAccount />}</li>
             <li>

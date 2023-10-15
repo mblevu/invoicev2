@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="slant-footer"></div>
         <footer className="max-width grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
           <div>
-            <h2 className="text-white text-3xl">Invoicer</h2>
+            {/* <h2 className="text-white text-3xl"></h2> */}
           </div>
 
           {/* <ul className="">
