@@ -4,9 +4,9 @@
 export default function Footer() {
   return (
     <>
-      <div className="bg-teal-900 py-10 lg:py-20 relative">
-        <div className="slant-footer"></div>
-        <footer className="max-width grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+      <div className="">
+        <div className=""></div>
+        <footer className="">
           <div>
             {/* <h2 className="text-white text-3xl"></h2> */}
           </div>

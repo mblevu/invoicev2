@@ -1,0 +1,68 @@
+/* about.css */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 20px);
+    border: 2px solid #007acc; /* Add border styling */
+    border-radius: 10px; /* Add border radius */
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .about-content {
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+    color: #555;
+    max-width: 70%;
+    margin: 0 auto;
+  }
+  
+  .features {
+    max-width: 40rem;
+    margin: 2rem auto;
+  }
+  
+  .features-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .features-list {
+    list-style-type: disc;
+    color: #555;
+  }
+  
+  .buttons-container {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+  
+  .button {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    border: none;
+    background-color: #007acc;
+    color: #fff;
+    cursor: pointer;
+    margin: 0.5rem;
+    transition: background-color 0.3s;
+    border-radius: 5px; /* Add border radius */
+  }
+  
+  .button:hover {
+    background-color: #005593;
+  }
+  

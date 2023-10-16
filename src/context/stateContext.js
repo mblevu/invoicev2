@@ -19,6 +19,8 @@ export default function StateContext({ children }) {
   const [invoiceDate, setInvoiceDate] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [notes, setNotes] = useState("");
+  const [advanceAmount, setAdvanceAmount] = useState("");
+  const [paidAmount, setPaidAmount] = useState("");
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
@@ -39,7 +41,7 @@ export default function StateContext({ children }) {
 
   useEffect(() => {
     if (window.innerWidth < width) {
-      alert("Place your phone in landscape mode for the best experience");
+      alert("Rotate your phone for the best experience");
     }
   }, [width]);
 
@@ -48,7 +50,7 @@ export default function StateContext({ children }) {
     e.preventDefault();
 
     if (!description || !quantity || !price) {
-      toast.error("Please fill in all inputs");
+      toast.error("Fill in all details");
     } else {
       const newItems = {
         id: uuidv4(),
@@ -131,6 +133,10 @@ export default function StateContext({ children }) {
     setDueDate,
     notes,
     setNotes,
+    paidAmount,
+    setPaidAmount,
+    advanceAmount,
+    setAdvanceAmount,
     description,
     setDescription,
     quantity,
