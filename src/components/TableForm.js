@@ -28,33 +28,35 @@ export default function TableForm() {
       <ToastContainer position="top-right" theme="colored" />
 
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col md:mt-16">
-          <label htmlFor="description">Title</label>
-          <input
-            type="text"
-            name="description"
-            id="description"
-            placeholder="Job description"
-            maxLength={96}
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <div>
-        <div className="flex flex-col">
+        <div className="flex flex-col md:flex-row md:mt-16">
+
+          <div className="flex flex-col flex-1 md:mr-4">
+            <label htmlFor="description">Title</label>
+            <input
+              type="text"
+              name="description"
+              id="description"
+              placeholder="Job description"
+              maxLength={96}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          <div className="flex flex-col flex-1">
             <label htmlFor="quantity">Pages</label>
             <input
               type="text"
               name="quantity"
               id="quantity"
-              // placeholder="Quantity"
+              placeholder="Quantity"
               maxLength={33}
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
             />
           </div>
-
-          <div className="flex flex-col">
+        </div>
+        <div className="flex flex-col md:flex-row md:mt-4">
+          <div className="flex flex-col flex-1 md:mr-4">
             <label htmlFor="price">CPP</label>
             <input
               type="text"
@@ -66,20 +68,14 @@ export default function TableForm() {
               onChange={(e) => setPrice(e.target.value)}
             />
           </div>
-
-        </div>
-        <div className="md:grid grid-cols-3 gap-10">
           <div className="flex flex-col">
             <label htmlFor="amount">Amount</label>
             <p>{amount}</p>
           </div>
-
-      </div>
-
-
-        <div className="md:grid grid-cols-3 gap-10">
-
         </div>
+
+        <div className="md:grid grid-cols-3 gap-10"></div>
+        
         <button
           type="submit"
           className="bg-green-500 mb-5 text-white font-bold py-2 px-8 rounded hover:bg-black-600 hover:text-white transition-all duration-150 hover:ring-4 hover:ring-blue-400"

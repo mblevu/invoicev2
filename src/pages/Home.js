@@ -1,52 +1,37 @@
-import { CreateAccount, LogIn } from "../buttons"
-// import hero from "../images/invoicerv2.png"
+import { CreateAccount, LogIn } from "../buttons";
+import hero from "../images/invoicerv2.png";
+import './Home.css'; // Import a separate CSS file for styling
 
 export default function Home() {
   return (
-    <>
-      <section className="max-width">
-        <section className="py-10 lg:py-32">
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:place-items-center md:gap-10 lg:gap-20">
-            <article>
-              <h1 className="text-slate-700 mb-5 text-4xl md:text-5xl font-bold text-center md:text-left">
-                Need an invoice quick?
-              </h1>
-              <article className="md:hidden">
-                {/* <img
-                  // src={hero}
-                  alt="Create Invoices Easily"
-                  title="Create Invoices Easily"
-                  className="block mx-auto rounded"
-                /> */}
-              </article>
-              <p className="text-slate-700 mt-5 md:mt-0 mb-5 text-center md:text-left">
-                Create and Download invoices for your clients.
-              </p>
+    <div className="home-container">
+      <div className="content-box">
+        <article>
+          <h1 className="title-text text-4xl md:text-5xl font-bold">
+            Need an Invoice?
+          </h1>
+          <article className="hidden md:block">
+            <img
+              src={hero}
+              alt="Create Invoices Easily"
+              title="Create Invoices Easily"
+              className="hero-image"
+            />
+          </article>
+          <p className="content-text mt-5 md:mt-0">
+            Generate and Download invoices for your clients in seconds.
+          </p>
 
-              <ul className="flex flex-wrap items-center justify-center md:justify-start">
-                <li className="mr-3">
-                  <CreateAccount />
-                </li>
-                <li>
-                  <LogIn />
-                </li>
-              </ul>
-
-            </article>
-
-            <article className="hidden md:block">
-              {/* <img
-                // src={hero}
-                alt="Create Invoices Easily"
-                title="Create Invoices Easily"
-                className="rounded"
-              /> */}
-            </article>
-          </div>
-        </section>
-      </section>
-
-      <div className="slant"></div>
-    </>
-  )
+          <ul className="button-container">
+            <li className="mr-3">
+              <CreateAccount />
+            </li>
+            <li>
+              <LogIn />
+            </li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  );
 }

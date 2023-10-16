@@ -1,56 +1,33 @@
-import { Footer } from "./index"
-import { LogIn, CreateAccount } from "../buttons"
+// About.js
 
-export default function About() {
+import React from "react";
+import { LogIn, CreateAccount } from "../buttons";
+import "./About.css"; // Import the CSS file
+
+const About = () => {
   return (
-    <>
-      <section className="bg-teal-200 py-10 lg:py-32 ">
-        <div className="max-width">
-          <div className="overlay">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center mb-3 text-slate-800 lg:mb-8">
-              About
-            </h1>
-            <p className="text-slate-700 text-center text-xl lg:w-2/3 lg:mx-auto">
-              Invoicing application designed and built to create
-              and send invoices to clients.
-            </p>
-            <p className="text-slate-700 text-center text-xl lg:w-2/3 lg:mx-auto mt-5">
-              Login to create your invoices
-            </p>
-
-            <div className="lg:max-w-2xl lg:mx-auto">
-              <h3 className="text-2xl text-slate-800 mt-10 mb-5">
-                Some of the Features include:
-              </h3>
-              <ol className="list-decimal text-slate-700">
-                <li>
-                  create invoice
-                </li>
-                <li className="my-3">
-                  Get invoice report
-                </li>
-                <li className="mb-3">
-                  Real-time view of invoice report
-                </li>
-                <li>
-                  Download invoice report
-                </li>
-              </ol>
-            </div>
-
-            <ul className="md:flex items-center justify-center mt-10 xl:max-w-3xl xl:mx-auto">
-              <li className="flex flex-col text-slate-700 mb-5 md:flex-row md:items-center md:mb-0 md:mr-5">
-                <CreateAccount />
-              </li>
-              <li className="flex flex-col text-slate-700 md:flex-row md:items-center">
-                <LogIn />
-              </li>
-            </ul>
-          </div>
+    <section className="container">
+      <div className="about-content">
+        <h1 className="title">About Us</h1>
+        <p className="subtitle">
+          A modern application designed to help you create and send invoices to your clients effortlessly.
+        </p>
+        <div className="features">
+          <h2 className="features-title">Key Features:</h2>
+          <ul className="features-list">
+            <li>Create invoices with ease</li>
+            <li>Access detailed invoice reports</li>
+            <li>Real-time view of your financial data</li>
+            <li>Download invoice reports in various formats</li>
+          </ul>
         </div>
-      </section>
-      <div className="slant-left"></div>
-      <Footer />
-    </>
-  )
-}
+        <div className="buttons-container">
+          <CreateAccount className="button" />
+          <LogIn className="button" />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default About;

@@ -1,0 +1,39 @@
+/* Home.css */
+
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 20px);
+  }
+  
+  .content-box {
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .title-text {
+    color: #333;
+  }
+  
+  .hero-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 30%; /* Adjust the value to control the image size */
+    border-radius: 10px; /* Rounded corners for the image */
+  }
+  
+  .content-text {
+    color: #333;
+  }
+  
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Style your buttons as needed, or you can use existing button classes */
+  
