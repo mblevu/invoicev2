@@ -40,9 +40,8 @@ export default function TableForm() {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-
-        <div className="md:grid grid-cols-3 gap-10">
-          <div className="flex flex-col">
+        <div>
+        <div className="flex flex-col">
             <label htmlFor="quantity">Pages</label>
             <input
               type="text"
@@ -68,10 +67,18 @@ export default function TableForm() {
             />
           </div>
 
+        </div>
+        <div className="md:grid grid-cols-3 gap-10">
           <div className="flex flex-col">
             <label htmlFor="amount">Amount</label>
             <p>{amount}</p>
           </div>
+
+      </div>
+
+
+        <div className="md:grid grid-cols-3 gap-10">
+
         </div>
         <button
           type="submit"

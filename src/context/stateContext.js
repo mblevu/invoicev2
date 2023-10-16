@@ -19,6 +19,8 @@ export default function StateContext({ children }) {
   const [invoiceDate, setInvoiceDate] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [notes, setNotes] = useState("");
+  const [advanceAmount, setAdvanceAmount] = useState("");
+  const [paidAmount, setPaidAmount] = useState("");
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
@@ -131,6 +133,10 @@ export default function StateContext({ children }) {
     setDueDate,
     notes,
     setNotes,
+    paidAmount,
+    setPaidAmount,
+    advanceAmount,
+    setAdvanceAmount,
     description,
     setDescription,
     quantity,

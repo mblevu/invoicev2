@@ -8,10 +8,10 @@ import Notes from "./Notes";
 import Table from "./Table";
 import TableForm from "./TableForm";
 import ReactToPrint from "react-to-print";
-import { DonateButton } from "../buttons";
+// import { DonateButton } from "../buttons";
 import { State } from "../context/stateContext";
 import Footer from "./Footer";
-
+import './App.css';
 function App() {
   const {
     name,
@@ -38,6 +38,10 @@ function App() {
     setInvoiceDate,
     dueDate,
     setDueDate,
+    paidAmount,
+    setPaidAmount,
+    advanceAmount,
+    setAdvanceAmount,
     notes,
     setNotes,
     componentRef,
@@ -53,7 +57,10 @@ function App() {
         }}
       >
         <section>
-          <div className="bg-white p-5 rounded shadow">
+          <div className="text-center text-xl uppercase bold text-black-1000">
+            Bill me 
+          </div>
+          <div className="bg-secondary p-5 rounded-xl border-4 border-primary shadow-lg">
             <div className="flex flex-col justify-center">
               <article className="md:grid grid-cols-2 gap-10">
                 <div className="flex flex-col">
@@ -99,20 +106,6 @@ function App() {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
-
-                {/* <div className="flex flex-col">
-                  <label htmlFor="website">website</label>
-                  <input
-                    type="url"
-                    name="website"
-                    id="website"
-                    placeholder="Enter your website"
-                    maxLength={96}
-                    autoComplete="off"
-                    value={website}
-                    onChange={(e) => setWebsite(e.target.value)}
-                  />
-                </div> */}
 
                 <div className="flex flex-col">
                   <label htmlFor="phone">Phone</label>
@@ -238,36 +231,75 @@ function App() {
               <article>
                 <TableForm />
               </article>
+            <div className="flex flex-col">
+            <label htmlFor="advanceAmount">Advance amount</label>
+            <input
+              type="text"
+              name="advanceAmount"
+              id="advanceAmount"
+              placeholder="Enter advance amount"
+              value={advanceAmount}
+              onChange={(e) => setAdvanceAmount(e.target.value)}
+            />
+            </div>
+            <div className="flex flex-col">
+            <label htmlFor="paidAmount">Paid amount</label>
+            <input
+              type="text"
+              name="paidAmount"
+              id="paidAmount"
+              placeholder="Enter paid amount"
+              value={paidAmount}
+              onChange={(e) => setPaidAmount(e.target.value)}
+               />
+            </div>
 
-              <label htmlFor="notes">Additional Notes</label>
+              <label htmlFor="notes">Comments</label>
               <textarea
                 name="notes"
                 id="notes"
                 cols="30"
                 rows="10"
-                placeholder="Additional notes to the client"
-                maxLength={500}
+                placeholder="Any comments to client?"
+                maxLength={50}
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
               ></textarea>
             </div>
           </div>
-          <article className="mt-5">
-            <DonateButton />
-          </article>
+
         </section>
 
         {/* Invoice Preview */}
-        <div className="invoice__preview bg-white p-5 rounded-2xl border-4 border-blue-200">
-          <ReactToPrint
-            trigger={() => (
-              
-              <button className="bg-green-500 ml-5 text-white font-bold py-2 px-8 rounded hover:bg-black-600 hover:text-white transition-all duration-150 hover:ring-4 hover:ring-blue-400">
-                Download
-              </button>
-            )}
-            content={() => componentRef.current}
+        
+        <div className="invoice__preview bg-light-gray p-4 rounded-xl border-2 border-gray-400">
+        <div className="text-center text-2xl text-black underline -600 font-semibold py-4 border-b border-gray-300">
+        Your Invoice Preview
+        </div>
+
+        <ReactToPrint
+          trigger={() => (
+            <button type="button" className="button">
+              <span className="button__text">Download</span>
+              <span className="button__icon">
+                <svg
+                  className="svg"
+                  data-name="Layer 2"
+                  id="bdd05811-e15d-428c-bb53-8661459f9307"
+                  viewBox="0 0 35 35"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path>
+                  <path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path>
+                  <path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path>
+                </svg>
+              </span>
+            </button>
+          )}
+          content={() => componentRef.current}
           />
+
+
           <div ref={componentRef} className="p-5">
             <Header />
 
