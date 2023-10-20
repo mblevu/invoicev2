@@ -1,0 +1,37 @@
+.excel-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+  }
+  
+  .excel-header {
+    background-color: #f5f5f5;
+    font-weight: bold;
+  }
+  
+  .excel-cell {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .excel-row:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  .excel-row:nth-child(even) {
+    background-color: #ffffff;
+  }
+
+  .yellow-bg {
+    background-color: yellow;
+  }
+  
+  .red-bg {
+    background-color: red;
+  }
+
+  .green-bg {
+    background-color: green;
+  }
+  

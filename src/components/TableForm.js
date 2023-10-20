@@ -7,12 +7,16 @@ import { State } from "../context/stateContext";
 
 export default function TableForm() {
   const {
+    ordernumber,
+    setOrderNumber,
     description,
     setDescription,
     quantity,
     setQuantity,
     price,
     setPrice,
+    status, // New state for status
+    setStatus, // New function to update status
     amount,
     list,
     total,
@@ -29,13 +33,26 @@ export default function TableForm() {
 
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row md:mt-16">
-
+        <div className="flex flex-col flex-1 md:mr-4">
+            <label htmlFor="ordernumber">Ordernumber</label>
+            <input
+              type="text"
+              name="ordernumber"
+              id="ordernumber"
+              className=""
+              placeholder="Job ordernumber"
+              maxLength={96}
+              value={ordernumber}
+              onChange={(e) => setOrderNumber(e.target.value)}
+            />
+          </div>
           <div className="flex flex-col flex-1 md:mr-4">
             <label htmlFor="description">Title</label>
             <input
               type="text"
               name="description"
               id="description"
+              className={status === "Pending" ? "text-yellow-500" : status === "Canceled" ? "text-red-500" : ""}
               placeholder="Job description"
               maxLength={96}
               value={description}
@@ -68,6 +85,19 @@ export default function TableForm() {
               onChange={(e) => setPrice(e.target.value)}
             />
           </div>
+          <div className="flex flex-col flex-1 md:mr-4">
+            <label htmlFor="status">Status</label>
+            <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+            >
+            <option value="">Select Status</option>
+            <option value="Pending">Pending</option>
+            <option value="Canceled">Canceled</option>
+            <option value="Completed">Completed</option>
+            </select>
+
+          </div>
           <div className="flex flex-col">
             <label htmlFor="amount">Amount</label>
             <p>{amount}</p>
@@ -84,25 +114,34 @@ export default function TableForm() {
         </button>
       </form>
 
-      {/* Table items */}
-
+      {/* Table items to be displayed in the table */}
       <table width="100%" className="mb-10 overflow-auto">
         <thead>
           <tr className="bg-gray-100 p-1">
+            <td className="font-bold">Orderno:</td>
             <td className="font-bold">Title</td>
             <td className="font-bold">Pages</td>
             <td className="font-bold">CPP</td>
             <td className="font-bold">Amount</td>
+            <td className="font-bold">Status</td>
           </tr>
         </thead>
-        {list.map(({ id, description, quantity, price, amount }) => (
+        {list.map(({ id, ordernumber, description, quantity, price, amount, status }) => (
           <React.Fragment key={id}>
             <tbody>
               <tr className="h-10">
-                <td>{description}</td>
-                <td>{quantity}</td>
+                <td>{ordernumber}</td>
+                <td
+                  className={
+                    status === "Pending" ? "text-yellow-500" : status === "Canceled" ? "text-red-500" : ""
+                  }
+                >
+                  {description}
+                </td>
+                <td className="">{quantity}</td>
                 <td>{price}</td>
                 <td className="amount">{amount}</td>
+                <td>{status}</td>
                 <td>
                   <button onClick={() => editRow(id)}>
                     <AiOutlineEdit className="text-green-500 font-bold text-xl" />

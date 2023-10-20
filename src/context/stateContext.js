@@ -21,9 +21,12 @@ export default function StateContext({ children }) {
   const [notes, setNotes] = useState("");
   const [advanceAmount, setAdvanceAmount] = useState("");
   const [paidAmount, setPaidAmount] = useState("");
+  const [sendingAmount, setSendingAmount] = useState(0);
   const [description, setDescription] = useState("");
+  const [ordernumber, setOrderNumber] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
+  const [status, setStatus] = useState("");
   const [amount, setAmount] = useState("");
   const [list, setList] = useState([]);
   const [total, setTotal] = useState(0);
@@ -49,19 +52,24 @@ export default function StateContext({ children }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!description || !quantity || !price) {
+    if (!ordernumber || !description || !quantity || !price) {
       toast.error("Fill in all details");
     } else {
       const newItems = {
         id: uuidv4(),
+        ordernumber,
         description,
         quantity,
         price,
+        status,
         amount,
+
       };
+      setOrderNumber("");
       setDescription("");
       setQuantity("");
       setPrice("");
+      setStatus("");
       setAmount("");
       setList([...list, newItems]);
       setIsEditing(false);
@@ -69,6 +77,7 @@ export default function StateContext({ children }) {
     }
   };
 
+  
   // Calculate items amount function
   useEffect(() => {
     const calculateAmount = (amount) => {
@@ -80,23 +89,40 @@ export default function StateContext({ children }) {
 
   // Use collect.js to calculate the total amount of items in the table
   const calculateTotal = () => {
-    const allItems = list.map((item) => item.amount);
+      const allItems = list
+    .filter((item) => item.status !== "Canceled") // Filter out "Canceled" items
+    .map((item) => item.amount);
 
     setTotal(collect(allItems).sum());
-  };
+    };
 
-  useEffect(() => {
-    calculateTotal();
-  });
+    useEffect(() => {
+      calculateTotal();
+    });
+
+    useEffect(() => {
+      const calculateSendingAmount = () => {
+        const totalAmount = parseFloat(total || 0);
+        const advance = parseFloat(advanceAmount || 0);
+        const paid = parseFloat(paidAmount || 0);
+  
+        const sending = totalAmount - (advance + paid);
+        setSendingAmount(sending);
+      };
+  
+      calculateSendingAmount();
+    }, [advanceAmount, paidAmount, total]);
 
   // Edit function
   const editRow = (id) => {
     const editingRow = list.find((row) => row.id === id);
     setList(list.filter((row) => row.id !== id));
     setIsEditing(true);
+    setOrderNumber(editingRow.ordernumber);
     setDescription(editingRow.description);
     setQuantity(editingRow.quantity);
     setPrice(editingRow.price);
+    setStatus(editingRow.status);
   };
 
   // Delete function
@@ -137,12 +163,18 @@ export default function StateContext({ children }) {
     setPaidAmount,
     advanceAmount,
     setAdvanceAmount,
+    sendingAmount,
+    setSendingAmount,
+    ordernumber,
+    setOrderNumber,
     description,
     setDescription,
     quantity,
     setQuantity,
     price,
     setPrice,
+    status,
+    setStatus,
     amount,
     setAmount,
     list,

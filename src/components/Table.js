@@ -1,31 +1,43 @@
 import React, { useContext } from "react";
 import { State } from "../context/stateContext";
+import './Table.css';
 
 export default function Table() {
   const { list, total } = useContext(State);
+  // const { ordernumber } = useContext(State);
 
   return (
     <>
-<table width="100%" className="mb-10">
+<table width="100%" className="excel-table">
   <thead>
-    <tr className="bg-gray-100 p-1">
-      <td className="font-bold">Title</td>
-      <td className="font-bold">Pages</td>
-      <td className="font-bold">CPP</td>
-      <td className="font-bold">Amount</td>
+    <tr className="excel-header">
+      <td className="excel-cell">Ordernumber</td>
+      <td className="excel-cell">Title</td>
+      <td className="excel-cell">CPP</td>
+      <td className="excel-cell">Pages</td>
+      <td className="excel-cell">Amount</td>
+      
+
     </tr>
   </thead>
-  {list.map(({ id, description, quantity, price, amount }) => (
-    <React.Fragment key={id}>
-      <tbody>
-        <tr className="h-10">
-          <td>{description}</td>
-          <td>{quantity}</td>
-          <td>{price}</td>
-          <td>{amount}</td>
-        </tr>
-      </tbody>
-    </React.Fragment>
+  {list.map(({ id, ordernumber, description, quantity, price, amount, status }) => (
+  <React.Fragment key={id}>
+    <tbody>
+      
+      <tr className={`excel-cell ${
+        status === 'Pending' ? 'yellow-bg' :
+        status === 'Canceled' ? 'red-bg' :
+        status === 'Completed' ? 'green-bg' : ''
+        }`}>
+        <td className="excel-cell">{ordernumber}</td>
+        <td className="excel-cell">{description}</td>
+        <td className="excel-cell">{price}</td>
+        <td className="excel-cell">{quantity}</td>
+        <td className="excel-cell">{amount}</td>
+        {/* <td className="excel-cell">{status}</td> */}
+      </tr>
+    </tbody>
+  </React.Fragment>
   ))}
 </table>
 
@@ -34,6 +46,7 @@ export default function Table() {
     Ksh. {total.toLocaleString()}
   </h2>
 </div>
+
 
     </>
   );

@@ -12,6 +12,9 @@ import ReactToPrint from "react-to-print";
 import { State } from "../context/stateContext";
 import Footer from "./Footer";
 import './App.css';
+import HTMLtoExcel from "react-html-to-excel";
+// import { useState } from "react";
+
 function App() {
   const {
     name,
@@ -42,10 +45,15 @@ function App() {
     setPaidAmount,
     advanceAmount,
     setAdvanceAmount,
+    sendingAmount,
+    setSendingAmount,
+    // balance,
+    // setBalance,
     // notes,
     // setNotes,
     componentRef,
   } = useContext(State);
+
 
   return (
     <>
@@ -181,28 +189,42 @@ function App() {
               <article>
                 <TableForm />
               </article>
-            <div className="flex flex-col">
-            <label htmlFor="advanceAmount">Advance amount</label>
-            <input
-              type="text"
-              name="advanceAmount"
-              id="advanceAmount"
-              placeholder="Enter advance amount"
-              value={advanceAmount}
-              onChange={(e) => setAdvanceAmount(e.target.value)}
-            />
-            </div>
-            <div className="flex flex-col">
-            <label htmlFor="paidAmount">Paid amount</label>
-            <input
-              type="text"
-              name="paidAmount"
-              id="paidAmount"
-              placeholder="Enter paid amount"
-              value={paidAmount}
-              onChange={(e) => setPaidAmount(e.target.value)}
-               />
-            </div>
+              <div className="flex flex-col">
+              <label htmlFor="advanceAmount">Advance amount</label>
+              <input
+                type="text"
+                name="advanceAmount"
+                id="advanceAmount"
+                placeholder="Enter advance amount"
+                value={advanceAmount}
+                onChange={(e) => setAdvanceAmount(e.target.value)}
+                />
+              </div>
+
+              <div className="flex flex-col">
+              <label htmlFor="paidAmount">Paid amount</label>
+              <input
+                type="text"
+                name="paidAmount"
+                id="paidAmount"
+                placeholder="Enter paid amount"
+                value={paidAmount}
+                onChange={(e) => setPaidAmount(e.target.value)}
+              />
+              </div>
+
+              <div className="flex flex-col">
+              <label htmlFor="sendingAmount">Sending amount</label>
+              <input
+                type="text"
+                name="sendingAmount"
+                id="sendingAmount"
+                placeholder="Enter sending amount"
+                value={sendingAmount}
+                onChange={(e) => setSendingAmount(e.target.value)}
+              />
+              </div>
+
             </div>
           </div>
 
@@ -236,20 +258,24 @@ function App() {
           )}
           content={() => componentRef.current}
           />
-
-
+          <HTMLtoExcel
+          id="test-table-xls"
+          table="table"
+          filename="invoice"
+          sheet="invoice"
+          />
           <div ref={componentRef} className="p-5">
             <Header />
+
+            <Table id="test-table-xls" />
+            
+            <Notes />
+
+            <Dates />
 
             <MainDetails />
 
             <ClientDetails />
-
-            <Dates />
-
-            <Table />
-
-            <Notes />
 
             <Footer />
 
