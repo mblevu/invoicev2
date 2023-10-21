@@ -4,6 +4,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DeleteModal from "./DeleteModal";
 import { State } from "../context/stateContext";
+// import Papa from "papaparse";
+import * as XLSX from "xlsx";
+import { v4 as uuidv4 } from "uuid";
 
 export default function TableForm() {
   const {
@@ -15,24 +18,89 @@ export default function TableForm() {
     setQuantity,
     price,
     setPrice,
-    status, // New state for status
-    setStatus, // New function to update status
+    status,
+    setStatus,
     amount,
     list,
+    setList,
     total,
     isEditing,
     showModal,
+    // setUploadedData,
     setShowModal,
     handleSubmit,
     editRow,
   } = useContext(State);
+
+  // Function to extract data from Excel and update the list
+  const handleExcelData = (data) => {
+    const updatedList = data.map((row) => {
+      const orderNumber = row[1]; // Assuming order number is in the second column
+      const title = row[2]; // Assuming title is in the third column
+      const pages = row[3]; // Assuming pages is in the fourth column
+      const cpp = row[4]; // Assuming CPP is in the fifth column
+      const amount = row[5];
+
+      // You can add additional data if needed
+
+      return {
+        id: uuidv4(),
+        ordernumber: orderNumber,
+        description: title,
+        quantity: pages,
+        price: cpp,
+        amount: amount,
+        status: "", // You can set the default status here
+      };
+    });
+
+    setList([...list, ...updatedList]);
+  };
+
+const handleFileUpload = (e) => {
+  const file = e.target.files[0];
+
+  if (!file) {
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = (e) => {
+    const results = [];
+
+    // Handle Excel files (XLSX)
+    if (file.name.endsWith(".xlsx") || file.name.endsWith(".xls")) {
+      const workbook = XLSX.read(e.target.result, { type: "array" });
+      workbook.SheetNames.forEach((sheetName) => {
+        const worksheet = workbook.Sheets[sheetName];
+        const data = XLSX.utils.sheet_to_json(worksheet, { header: 1, raw: false });
+        results.push(...data);
+      });
+      handleExcelData(results);
+    }
+  };
+
+  reader.readAsArrayBuffer(file);
+};
 
   return (
     <>
       <ToastContainer position="top-right" theme="colored" />
 
       <form onSubmit={handleSubmit}>
-        <div className="flex flex-col md:flex-row md:mt-16">
+      <div className="flex flex-col">
+        <label htmlFor="file">Upload Data File</label>
+        <input
+          type="file"
+          name="file"
+          id="file"
+          accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+          onChange={handleFileUpload}
+          />
+        </div>
+        <div className="flex flex-col md:flex-row md:mt-5">
+
         <div className="flex flex-col flex-1 md:mr-4">
             <label htmlFor="ordernumber">Ordernumber</label>
             <input
@@ -59,14 +127,17 @@ export default function TableForm() {
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-          <div className="flex flex-col flex-1">
+
+        </div>
+        <div>
+        <div className="flex flex-col flex-1 ">
             <label htmlFor="quantity">Pages</label>
             <input
               type="text"
               name="quantity"
               id="quantity"
               placeholder="Quantity"
-              maxLength={33}
+              maxLength={10}
               value={quantity}
               onChange={(e) => setQuantity(e.target.value)}
             />

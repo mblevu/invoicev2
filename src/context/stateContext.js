@@ -35,7 +35,14 @@ export default function StateContext({ children }) {
   const [isEditing, setIsEditing] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [uploadedData, setUploadedData] = useState([]);
 
+  
+  useEffect(() => {
+    if (uploadedData.length > 0) {
+      setList([...list, ...uploadedData]);
+    }
+  }, [uploadedData, list, setList]);
   const componentRef = useRef();
 
   const handlePrint = () => {
@@ -186,6 +193,7 @@ export default function StateContext({ children }) {
     handlePrint,
     isEditing,
     setIsEditing,
+    setUploadedData,
     showModal,
     setShowModal,
     handleSubmit,
