@@ -2,11 +2,13 @@ import { useContext } from "react";
 import Logout from "../components/Logout";
 import { State } from "../context/stateContext";
 import './LogOut.css';
+
 export default function LogOut() {
   const { showLogoutModal, setShowLogoutModal } = useContext(State);
 
   return (
     <>
+    
     <button
       onClick={() => setShowLogoutModal(true)}
       className="Btn"
@@ -22,5 +24,6 @@ export default function LogOut() {
       {showLogoutModal && <Logout />}
 
     </>
+    
   );
 }

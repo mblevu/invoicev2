@@ -8,9 +8,9 @@ export default function CreateAccount() {
     <>
       <button
         onClick={login}
-        // className="bg-teal-500 py-2 px-6 rounded text-base hover:bg-transparent text-white transition-all duration-150 hover:bg-orange-600 shadow-lg hover:ring-4 hover:ring-blue-400"
+        className="bg-teal-500 py-2 px-6 rounded text-base hover:bg-transparent text-white transition-all duration-150 hover:bg-orange-600 shadow-lg hover:ring-4 hover:ring-blue-400"
       >
-        {/* Log In or Create Account */}
+        Log In or Create Account
       </button>
     </>
   );

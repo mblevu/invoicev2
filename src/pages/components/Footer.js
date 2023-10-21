@@ -10,36 +10,7 @@ export default function Footer() {
           <div>
             {/* <h2 className="text-white text-3xl"></h2> */}
           </div>
-
-          {/* <ul className="">
-            <li>
-              <Link to="/about" className="text-white">
-                About Invoicer
-              </Link>
-            </li>
-            <li className="my-3">
-              <Link to="/" className="text-white">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/suggestion-box" className="text-white">
-                Suggestion Box
-              </Link>
-            </li>
-          </ul>
-
-          <ul className="">
-            <li className="">
-              <CreateAccount />
-            </li>
-            <li className="my-5">
-              <LogIn />
-            </li>
-            <li>
-              <DonateButton />
-            </li>
-          </ul> */}
+          {/* // can add top navbar links here */}
 
         </footer>
       </div>

@@ -1,5 +1,11 @@
 # invoicev2
-
+ print as excel
+ yellow for pending
+ red for cancelled
+ paid
+ advance
+ sending
+ 
 
 ## enhancements
 ### enhancement0: conditional rendering approach to check if links exists before mapping

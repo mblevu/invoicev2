@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react"
 import { Link } from "react-router-dom"
 import AuthContext from "../../context/auth"
 import { navbar } from "../../data/data"
-import { CreateAccount, DonateButton, LogOut } from "../../buttons"
+import { CreateAccount, DonateButton, LogOut, ShowAllButton } from "../../buttons"
 
 export default function Header() {
   const [links] = useState(navbar)
@@ -47,11 +47,15 @@ export default function Header() {
           ) : null}
 
             <li>{user ? <LogOut /> : <CreateAccount />}</li>
-            <div className="">
-              <h2 className="font-bold text-2xl text-gray-800 underline">
+            {/* <div className="">
+              <h2 className="">
                 <Link to="/about">About</Link>
               </h2>
-            </div>
+            </div> */}
+            <li>
+              <ShowAllButton />
+            </li>
+
             <li>
               <DonateButton />
             </li>

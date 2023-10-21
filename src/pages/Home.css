@@ -9,24 +9,25 @@
   
   .content-box {
     border: 1px solid #333;
-    padding: 20px;
+    padding: 80px;
     border-radius: 10px;
     text-align: center;
+    width: fit-content;
   }
   
   .title-text {
     color: #333;
-  }
-  
-  .hero-image {
-    display: block;
-    margin: 0 auto;
-    max-width: 30%; /* Adjust the value to control the image size */
-    border-radius: 10px; /* Rounded corners for the image */
+    font-size: 2.5em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    margin-top: auto;
   }
   
   .content-text {
-    color: #333;
+    color: #422c2c;
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-bottom: 20px;
   }
   
   .button-container {
@@ -34,6 +35,4 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-  
-  /* Style your buttons as needed, or you can use existing button classes */
-  
+ 

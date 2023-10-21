@@ -18,10 +18,6 @@ export default function Testimonials() {
                   <p className="text-xl font-bold text-white">{company}</p>
                 </div>
               </article>
-
-              <article>
-                <a href="https://twitter.com/tsbsankara">{icon}</a>
-              </article>
             </div>
           </article>
         ))}
