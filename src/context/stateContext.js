@@ -109,16 +109,15 @@ export default function StateContext({ children }) {
 
     useEffect(() => {
       const calculateSendingAmount = () => {
-        const totalAmount = parseFloat(total || 0);
         const advance = parseFloat(advanceAmount || 0);
         const paid = parseFloat(paidAmount || 0);
   
-        const sending = totalAmount - (advance + paid);
+        const sending = paid - advance;
         setSendingAmount(sending);
       };
   
       calculateSendingAmount();
-    }, [advanceAmount, paidAmount, total]);
+    }, [advanceAmount, paidAmount])
 
   // Edit function
   const editRow = (id) => {

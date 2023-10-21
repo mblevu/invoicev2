@@ -11,7 +11,7 @@ export default function Table() {
 <table width="100%" className="excel-table">
   <thead>
     <tr className="excel-header">
-      <td className="excel-cell">Ordernumber</td>
+      <td className="excel-cell">Order No.</td>
       <td className="excel-cell">Title</td>
       <td className="excel-cell">CPP</td>
       <td className="excel-cell">Pages</td>

@@ -1,6 +1,5 @@
 import { CreateAccount, LogIn } from "../buttons";
-// import hero from "../images/invoicerv2.png";
-import './Home.css'; // Import a separate CSS file for styling
+import './Home.css';
 
 export default function Home() {
   return (
@@ -13,7 +12,6 @@ export default function Home() {
           <p className="content-text mt-5 md:mt-0">
             Generate and Download invoices for your clients in seconds.
           </p>
-
           <ul className="button-container">
             <li className="mr-3">
               <CreateAccount />

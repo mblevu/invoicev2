@@ -45,8 +45,8 @@ function App() {
     setPaidAmount,
     advanceAmount,
     setAdvanceAmount,
-    sendingAmount,
-    setSendingAmount,
+    // sendingAmount,
+    // setSendingAmount,
     // balance,
     // setBalance,
     // notes,
@@ -190,18 +190,6 @@ function App() {
                 <TableForm />
               </article>
               <div className="flex flex-col">
-              <label htmlFor="advanceAmount">Advance amount</label>
-              <input
-                type="text"
-                name="advanceAmount"
-                id="advanceAmount"
-                placeholder="Enter advance amount"
-                value={advanceAmount}
-                onChange={(e) => setAdvanceAmount(e.target.value)}
-                />
-              </div>
-
-              <div className="flex flex-col">
               <label htmlFor="paidAmount">Paid amount</label>
               <input
                 type="text"
@@ -214,6 +202,18 @@ function App() {
               </div>
 
               <div className="flex flex-col">
+              <label htmlFor="advanceAmount">Advance amount</label>
+              <input
+                type="text"
+                name="advanceAmount"
+                id="advanceAmount"
+                placeholder="Enter advance amount"
+                value={advanceAmount}
+                onChange={(e) => setAdvanceAmount(e.target.value)}
+                />
+              </div>
+
+              {/* <div className="flex flex-col">
               <label htmlFor="sendingAmount">Sending amount</label>
               <input
                 type="text"
@@ -223,7 +223,7 @@ function App() {
                 value={sendingAmount}
                 onChange={(e) => setSendingAmount(e.target.value)}
               />
-              </div>
+              </div> */}
 
             </div>
           </div>

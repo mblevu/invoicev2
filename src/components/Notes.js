@@ -9,12 +9,12 @@ export default function Notes() {
   return (
     <>
     <section className="flex-col items-end justify-end font-bold">
-    <h3 className="text-2xl font-semibold mb-3">extras:</h3>
-    <div>
-    <p className="text-gray-700 text-lg">Advance: Kshs. {advanceAmount}</p>
-    </div>
+    <h3 className="text-2xl font-semibold mb-3">N/B:</h3>
     <div>
     <p className="text-gray-700 text-lg">Paid: Kshs: {paidAmount}</p>
+    </div>
+    <div>
+    <p className="text-gray-700 text-lg">Advance: Kshs. {advanceAmount}</p>
     </div>
     <div>
     <p className="text-gray-700 text-lg">Sending: Kshs: {sendingAmount}</p>

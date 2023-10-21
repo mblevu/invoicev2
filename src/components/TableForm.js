@@ -32,30 +32,34 @@ export default function TableForm() {
     editRow,
   } = useContext(State);
 
-  // Function to extract data from Excel and update the list
   const handleExcelData = (data) => {
-    const updatedList = data.map((row) => {
-      const orderNumber = row[1]; // Assuming order number is in the second column
-      const title = row[2]; // Assuming title is in the third column
-      const pages = row[3]; // Assuming pages is in the fourth column
-      const cpp = row[4]; // Assuming CPP is in the fifth column
+    const updatedList = data.slice(1).map((row) => {
+      const orderNumber = row[1];
+      const title = row[2];
+      const pages = row[3];
+      const cpp = row[4];
       const amount = row[5];
-
-      // You can add additional data if needed
-
-      return {
-        id: uuidv4(),
-        ordernumber: orderNumber,
-        description: title,
-        quantity: pages,
-        price: cpp,
-        amount: amount,
-        status: "", // You can set the default status here
-      };
+  
+      // Check if all required fields have data
+      if (orderNumber && title && pages && cpp && amount) {
+        return {
+          id: uuidv4(),
+          ordernumber: orderNumber,
+          description: title,
+          quantity: pages,
+          price: cpp,
+          amount: amount,
+          status: "", // You can set the default status here
+        };
+      }
+      return null; // Ignore rows that are missing data in the specified columns
     });
-
-    setList([...list, ...updatedList]);
+  
+    // Remove null entries and add to the list
+    setList([...list, ...updatedList.filter((item) => item !== null)]);
   };
+  
+  
 
 const handleFileUpload = (e) => {
   const file = e.target.files[0];
@@ -90,7 +94,7 @@ const handleFileUpload = (e) => {
 
       <form onSubmit={handleSubmit}>
       <div className="flex flex-col">
-        <label htmlFor="file">Upload Data File</label>
+        <label htmlFor="file">Upload Invoice</label>
         <input
           type="file"
           name="file"
@@ -102,7 +106,7 @@ const handleFileUpload = (e) => {
         <div className="flex flex-col md:flex-row md:mt-5">
 
         <div className="flex flex-col flex-1 md:mr-4">
-            <label htmlFor="ordernumber">Ordernumber</label>
+            <label htmlFor="ordernumber">Order Number</label>
             <input
               type="text"
               name="ordernumber"
@@ -189,7 +193,7 @@ const handleFileUpload = (e) => {
       <table width="100%" className="mb-10 overflow-auto">
         <thead>
           <tr className="bg-gray-100 p-1">
-            <td className="font-bold">Orderno:</td>
+            <td className="font-bold">Order No:</td>
             <td className="font-bold">Title</td>
             <td className="font-bold">Pages</td>
             <td className="font-bold">CPP</td>
