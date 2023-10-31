@@ -144,12 +144,12 @@ function App() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="invoiceNumber">Order Number</label>
+                  <label htmlFor="invoiceNumber">Invoice Number</label>
                   <input
                     type="text"
                     name="invoiceNumber"
                     id="invoiceNumber"
-                    placeholder="Order Number"
+                    placeholder="Invoice Number"
                     autoComplete="off"
                     value={invoiceNumber}
                     onChange={(e) => setInvoiceNumber(e.target.value)}
