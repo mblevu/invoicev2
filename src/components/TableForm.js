@@ -124,7 +124,7 @@ const handleFileUpload = (e) => {
               type="text"
               name="description"
               id="description"
-              className={status === "Pending" ? "text-yellow-500" : status === "Canceled" ? "text-red-500" : ""}
+              className={status === "Pending" ? "text-yellow-500" : status === "Canceled" ? "text-red-500" : status === "Completed" ? "text-green-500" :""}
               placeholder="Job description"
               maxLength={96}
               value={description}
@@ -208,7 +208,7 @@ const handleFileUpload = (e) => {
                 <td>{ordernumber}</td>
                 <td
                   className={
-                    status === "Pending" ? "text-yellow-500" : status === "Canceled" ? "text-red-500" : ""
+                    status === "Pending" ? "text-yellow-500" : status === "Canceled" ? "text-red-500" : status === "Completed" ? "text-green-500" : ""
                   }
                 >
                   {description}

@@ -12,7 +12,7 @@ export default function MainDetails() {
         {/* <h2 className="font-bold text-3xl uppercase mb-1">{name}</h2> */}
         <p>From: {name}</p>
         <p>To: {clientName}</p>
-        <span className="font-bold ">Order number:</span> {invoiceNumber}
+        <span className="font-bold ">Invoice No: </span> {invoiceNumber}
       </section>
     </>
   );

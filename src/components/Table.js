@@ -27,7 +27,7 @@ export default function Table() {
       <tr className={`excel-cell ${
         status === 'Pending' ? 'yellow-bg' :
         status === 'Canceled' ? 'red-bg' :
-        status === 'Completed' ? 'green-bg' : ''
+        status === 'Completed' ? '' : ''
         }`}>
         <td className="excel-cell">{ordernumber}</td>
         <td className="excel-cell">{description}</td>
